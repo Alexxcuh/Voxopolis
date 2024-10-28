@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var cameraYbone = $Camera/ybone
 @onready var cameraXbone = $Camera/ybone/xbone
 @onready var cls = $"Camera/ybone/xbone/Camera3D/0"
-
+var b = 0
 #health
 @onready var healthbar = $Sprite3D/CanvasLayer/HS
 
@@ -649,3 +649,11 @@ func _on_feedbacktext_text_changed():
 	disable = 1
 	pass # Replace with function body.
 
+func _on_debug_pressed():
+	b = 1 - b
+	if b == 0:
+		$Sprite3D/Debug.visible = false
+	else:
+		$Sprite3D/Debug.visible = true
+		
+	pass # Replace with function body.
