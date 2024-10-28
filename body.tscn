@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_x4cqq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgfkq"]
 margin = 0.0
-radius = 0.694396
+radius = 0.694395
 height = 1.38879
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ldce"]

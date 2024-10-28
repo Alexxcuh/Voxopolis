@@ -1,6 +1,5 @@
 extends Sprite3D
 
-@onready var Stamina = $CanvasLayer/Stamina
 @onready var EditName = $CanvasLayer/NickEdit
 @onready var Name = $CanvasLayer/main/Nick
 @onready var infstaminab = $CanvasLayer/CheckButton
@@ -33,17 +32,17 @@ extends Sprite3D
 @onready var badge = $CanvasLayer/main/badge
 #MENU STUFF
 @onready var menub = $CanvasLayer/Menu
-@onready var Menu = $CanvasLayer/Panel/MainButtonspanel/Menu
-@onready var Settings = $CanvasLayer/Panel/MainButtonspanel/Settings
-@onready var Feedback = $CanvasLayer/Panel/MainButtonspanel/Feedback
-@onready var Graphics = $CanvasLayer/Panel/Settings/Graphics
-@onready var Debug = $CanvasLayer/Panel/Settings/Debug
-@onready var Leave = $CanvasLayer/Panel/Menu/Leave
-@onready var Reset = $CanvasLayer/Panel/Menu/Reset
-@onready var Feedbacktext = $CanvasLayer/Panel/Feedback/Feedbacktext
-@onready var Send = $CanvasLayer/Panel/Feedback/Send
-@onready var Bloom = $CanvasLayer/Panel/Graphics/Bloom
-@onready var SSIL = $CanvasLayer/Panel/Graphics/SSIL
+@onready var Menu = $CanvasLayer/Origin/Panel3/MainButtonspanel/Menu
+@onready var Settings = $CanvasLayer/Origin/Panel3/MainButtonspanel/Settings
+@onready var Feedback = $CanvasLayer/Origin/Panel3/MainButtonspanel/Feedback
+@onready var Graphics = $CanvasLayer/Origin/Panel3/Settings/Graphics
+@onready var Debug = $CanvasLayer/Origin/Panel3/Settings/Debug
+@onready var Leave = $CanvasLayer/Origin/Panel3/Menu/Leave
+@onready var Reset = $CanvasLayer/Origin/Panel3/Menu/Reset
+@onready var Feedbacktext = $CanvasLayer/Origin/Panel3/Feedback/Feedbacktext
+@onready var Send = $CanvasLayer/Origin/Panel3/Feedback/Send
+@onready var Bloom = $CanvasLayer/Origin/Panel3/Graphics/Bloom
+@onready var SSIL = $CanvasLayer/Origin/Panel3/Graphics/SSIL
 #get stuff ready
 var disable = 0
 var bpp = false

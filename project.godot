@@ -23,6 +23,10 @@ config/windows_native_icon="res://clienticonico.ico"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/discord_autoload.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
+[dotnet]
+
+project/assembly_name="Voxopolis"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/discord-sdk-gd/plugin.cfg")

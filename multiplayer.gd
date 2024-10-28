@@ -22,10 +22,11 @@ func _ready():
 		else:
 			print("Invalid URL format")
 			var base64_param = url
-			print("Base64 Parameter:", base64_param)
-			var decoded_text = Marshalls.base64_to_utf8(base64_param)
-			print("Decoded Text:", decoded_text)
-			$CanvasLayer/decoded.text = "Welcome Back, " + decoded_text + '!'
+			if url != " " and url != "" and url != null:
+				print("Base64 Parameter:", base64_param)
+				var decoded_text = Marshalls.base64_to_utf8(base64_param)
+				print("Decoded Text:", decoded_text)
+				$CanvasLayer/decoded.text = "Welcome Back, " + decoded_text + '!'
 
 func _on_host_pressed():
 	peer.set_bind_ip(str(address.text))
@@ -48,6 +49,11 @@ func add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child",player)
+	var iclass = player.get_class()
+	if iclass == 'CharacterBody3D':
+		if player.name != str(id):
+			if 'Platform' not in player.name:
+				player.leaderboard(player,0)
 
 func headmessage(message, id, Message):
 	rpc('_headmessage',message, id, Message)

@@ -55,14 +55,14 @@ extends CharacterBody3D
 #misc
 @onready var msg = $Visuals/TorsoBone/HeadBone/Head/Message
 #MENU
-@onready var menupanel = $Sprite3D/CanvasLayer/Panel
+@onready var menupanel = $Sprite3D/CanvasLayer/Origin/Panel3
 #MENU - MENUS
-@onready var MainButtonspanel = $Sprite3D/CanvasLayer/Panel/MainButtonspanel
-@onready var Settingsmenu = $Sprite3D/CanvasLayer/Panel/Settings
-@onready var Menu = $Sprite3D/CanvasLayer/Panel/Menu
-@onready var Feedback = $Sprite3D/CanvasLayer/Panel/Feedback
-@onready var Graphicsmenu = $Sprite3D/CanvasLayer/Panel/Graphics
-@onready var Feedbacktext = $Sprite3D/CanvasLayer/Panel/Feedback/Feedbacktext
+@onready var MainButtonspanel = $Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel
+@onready var Settingsmenu = $Sprite3D/CanvasLayer/Origin/Panel3/Settings
+@onready var Menu = $Sprite3D/CanvasLayer/Origin/Panel3/Menu
+@onready var Feedback = $Sprite3D/CanvasLayer/Origin/Panel3/Feedback
+@onready var Graphicsmenu = $Sprite3D/CanvasLayer/Origin/Panel3/Graphics
+@onready var Feedbacktext = $Sprite3D/CanvasLayer/Origin/Panel3/Feedback/Feedbacktext
 #PLAYER ANIMATIONS
 @onready var plranim = $Visuals/Animations
 var bpp = false
@@ -101,6 +101,7 @@ var nonowords = ['/','.',',','-','_','+','=',"]","[","{","}",'`','~','!','@','#'
 var timer = 0
 var texting = false
 var wave = false
+@onready var vbox = $Sprite3D/CanvasLayer/VBoxContainer
 @onready var board = $Sprite3D/CanvasLayer/name
 @export var spawnpoint : Vector3 = self.position
 var sb = false
@@ -134,7 +135,8 @@ func base64_to_text(base64_string: String) -> String:
 	return decoded_string
 
 func _ready():
-	$Sprite3D/CanvasLayer/Panel.visible = false
+	board.visible = false
+	$Sprite3D/CanvasLayer/Origin/Panel3.visible = false
 	Settingsmenu.visible = false
 	Menu.visible = false
 	Feedback.visible = false
@@ -159,9 +161,10 @@ func _ready():
 			print("Invalid URL format")
 			var base64_param = url
 			print("Base64 Parameter:", base64_param)
-			var decoded_text = Marshalls.base64_to_utf8(base64_param)
-			print("Decoded Text:", decoded_text)
-			DisplayName.text = decoded_text
+			if url != " " and url != "" and url != null:
+				var decoded_text = Marshalls.base64_to_utf8(base64_param)
+				print("Decoded Text:", decoded_text)
+				DisplayName.text = decoded_text
 	if DisplayName.text == '':
 		DisplayName.text = self.name
 	if ('' in DisplayName.text or ' ' in DisplayName.text):
@@ -203,17 +206,20 @@ func messagefromserver(message, DisplayName, id):
 	Chat.text += messagefull
 
 func fetchplayers(id):
-	get_parent().fetchplayers(id)
+	#get_parent().fetchplayers(id)
+	pass
 
 func leaderboard(i,y):
+	print("bro")
 	var clc =  $Sprite3D/CanvasLayer.get_children()
 	for v in clc:
 		if v.name == 'namechild':
 			$Sprite3D/CanvasLayer.remove_child(v)
 	var boardclone = board.duplicate()
 	var bc = boardclone.get_children()
-	$Sprite3D/CanvasLayer.add_child(boardclone)
+	vbox.add_child(boardclone)
 	boardclone.name = 'namechild'
+	print(i.name)
 	boardclone.visible = true
 	for o in bc:
 		if o.name == 'Nick':
@@ -223,10 +229,9 @@ func leaderboard(i,y):
 				o.visible = false
 			else:
 				o.visible = true
-	boardclone.position = Vector2(board.position.x, y)
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and is_inside_tree():
 		# Check if the click was outside the text box
 		var click_position = event.position
 		if not ChatTEXT.get_global_rect().has_point(click_position):
@@ -322,7 +327,7 @@ func _physics_process(delta):
 					NameEdit.text = ''
 				else:
 					NameEdit.text = "Invalid"
-		if not (' ' in text or ' ' in text2 or ' ' in $Sprite3D/CanvasLayer/Panel/Feedback/Feedbacktext.text):
+		if not (' ' in text or ' ' in text2 or ' ' in $Sprite3D/CanvasLayer/Origin/Panel3/Feedback/Feedbacktext.text):
 			if Input.is_action_pressed("jump") and is_on_floor() and disable == 0:
 				velocity.y = JUMP_VELOCITY
 				JumpSFX.play()
@@ -416,6 +421,8 @@ func _physics_process(delta):
 						plranim.play("run")
 				else:
 					plranim.speed_scale = SPEED/2
+					if $"Sprite3D/CanvasLayer/Virtual Joystick".output.length() > 0:
+						plranim.speed_scale = $"Sprite3D/CanvasLayer/Virtual Joystick".output.length()
 					#walk
 					if falling == false:
 						plranim.play("walk")
@@ -423,6 +430,8 @@ func _physics_process(delta):
 		else:
 			if direction.length() > 0.01:
 				plranim.speed_scale = SPEED/2
+				if $"Sprite3D/CanvasLayer/Virtual Joystick".output.length() > 0:
+					plranim.speed_scale = $"Sprite3D/CanvasLayer/Virtual Joystick".output.length()
 				#walk
 				if falling == false:
 					plranim.play("walk")

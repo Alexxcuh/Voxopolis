@@ -3,8 +3,8 @@ var toggle = false
 var animdone = false
 var did = false
 @onready var anim = $AnimationPlayer
-@onready var menuanim = $"../Panel/AnimationPlayer"
-@onready var menu = $"../Panel"
+@onready var menuanim = $"../Origin/Panel3/AnimationPlayer"
+@onready var menu = $"../Origin/Panel3"
 signal state(toggled:bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -11,7 +11,7 @@ extends Control
 @export var pressed_color := Color.GRAY
 
 ## If the input is inside this range, the output is zero.
-@export_range(0, 200, 1) var deadzone_size : float = 10
+@export_range(0, 200, 1) var deadzone_size : float = 2
 
 ## The max distance the tip can reach.
 @export_range(0, 500, 1) var clampzone_size : float = 75
@@ -47,7 +47,7 @@ enum Visibility_mode {
 var is_pressed := false
 
 # The joystick output.
-var output := Vector2.ZERO
+@export var output := Vector2.ZERO
 
 # PRIVATE VARIABLES
 

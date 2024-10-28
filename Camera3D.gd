@@ -10,7 +10,7 @@ var min_zoom = 0  # Adjust as needed
 var max_zoom = 5  # Adjust as needed
 
 @onready var xbone = $".." # Adjust the path as needed
-@onready var Feedbacktext = $"../../../../Sprite3D/CanvasLayer/Panel/Feedback/Feedbacktext"
+@onready var Feedbacktext = $"../../../../Sprite3D/CanvasLayer/Origin/Panel3/Feedback/Feedbacktext"
 @onready var ChatTEXT = $"../../../../Sprite3D/CanvasLayer/ChatTEXT"
 @onready var NameEdit = $"../../../../Sprite3D/CanvasLayer/NickEdit"
 @onready var ybone = $"../.."    # Adjust the path as needed
@@ -60,21 +60,25 @@ func _input(event):
 		if event is InputEventScreenTouch:
 			if not ctrl_lock:
 				if event.pressed:
-					$"../../../..".messagefromserver(str(event.position),'SERVER')
-		elif event is InputEventMouseMotion or event is InputEventScreenDrag:
+					$"../../../..".messagefromserver(str(event.position),'SERVER',0)
+		if event is InputEventScreenDrag:
+			if not ctrl_lock:
+				$"../../../..".messagefromserver(str(event.position),'SERVER',0)
+				var rotation_change
+				rotation_change = -event.relative * sensitivity
+				xbone.rotate_x(deg_to_rad(rotation_change.y))
+				ybone.rotate_y(deg_to_rad(rotation_change.x))
+		elif event is InputEventMouseMotion:
 			if ctrl_lock or Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED or zoom == 0:
 				if disable == 0:
 					var rotation_change
-					if event is InputEventMouseMotion:
-						rotation_change = -event.relative * sensitivity
-					else:
-						rotation_change = -event.relative * sensitivity / 10.0
+					rotation_change = -event.relative * sensitivity
 					xbone.rotate_x(deg_to_rad(rotation_change.y))
 					ybone.rotate_y(deg_to_rad(rotation_change.x))
 		elif event is InputEventScreenTouch:
 			if not ctrl_lock:
 				if event.pressed:
-					$"../../../..".messagefromserver(str(event.position),'SERVER')
+					$"../../../..".messagefromserver(str(event.position),'SERVER', 0)
 		elif Input.is_action_just_pressed("mouse_wheel_up") and zoom > min_zoom and disable == 0:
 			if disable == 0:
 				zoom -= 0.5

@@ -3,12 +3,7 @@
 
 # TODO
 ## Bugs
- - Fix over 3 Players camera bug. *where when 3 players join, the third player uses the camera of player 1 or 2*
  - If a player is over another player's head, both players will fly. *rarely happeneds*
- - Menu failing to scale to different resolutions.
- - UI failing to scale correctly.
 ## Features
  - Add Death Character.
  - Make the tokens more secure.
- - Mobile Support.
- - Optimize the game.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cvu1gsrdp5x2h"]
+[gd_scene load_steps=105 format=3 uid="uid://cvu1gsrdp5x2h"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_o62uq"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_lyr0w"]
@@ -2100,10 +2100,10 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 expand_margin_left = 20.0
 
-[sub_resource type="Theme" id="Theme_ht587"]
+[sub_resource type="Theme" id="Theme_crv8a"]
 Panel/styles/panel = SubResource("StyleBoxFlat_cme0f")
 
-[sub_resource type="Theme" id="Theme_crv8a"]
+[sub_resource type="Theme" id="Theme_ht587"]
 Panel/styles/panel = SubResource("StyleBoxFlat_cme0f")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6vkfs"]
@@ -2370,6 +2370,8 @@ _data = {
 "open": SubResource("Animation_3ik0i")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6w42"]
+
 [sub_resource type="SystemFont" id="SystemFont_wkda3"]
 font_names = PackedStringArray("Arial")
 
@@ -2511,39 +2513,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.546583, 1),
 "update": 0,
-"values": [Vector2(296, 150), Vector2(296, 1000)]
+"values": [Vector2(0, 0), Vector2(296, 1000)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.15625, 1),
-"update": 0,
-"values": [Vector2(560, 321), Vector2(560, 321)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.769466, 1),
 "update": 0,
 "values": [0.0, 0.698132]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.243676, 1),
 "update": 0,
@@ -2563,39 +2553,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
-"values": [Vector2(296, 1000), Vector2(296, 150)]
+"values": [Vector2(296, 1000), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.25, 1),
-"update": 0,
-"values": [Vector2(560, 321), Vector2(560, 321)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.45, 1),
 "update": 0,
 "values": [0.698132, 0.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
@@ -2833,7 +2811,6 @@ shape = SubResource("CapsuleShape3D_ljgnf")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 centered = false
 script = ExtResource("7_jjccu")
-version = "2.9.0"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Sprite3D"]
 
@@ -2879,6 +2856,97 @@ offset_right = 0.575989
 offset_bottom = 1.55997
 scale = Vector2(1, 0.96)
 placeholder_text = "Your Display Name here."
+
+[node name="name" type="Panel" parent="Sprite3D/CanvasLayer"]
+custom_minimum_size = Vector2(0, 40)
+offset_left = 872.0
+offset_top = 84.0
+offset_right = 1168.0
+offset_bottom = 124.0
+grow_horizontal = 0
+theme = SubResource("Theme_crv8a")
+
+[node name="badge" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = -1.025
+anchor_right = 0.931
+anchor_bottom = -1.025
+offset_left = -267.992
+offset_top = 50.0
+offset_right = 575.688
+offset_bottom = 855.112
+scale = Vector2(0.027805, 0.027805)
+texture = ExtResource("10_kvw8k")
+
+[node name="Nick" type="Label" parent="Sprite3D/CanvasLayer/name"]
+modulate = Color(0.396078, 0.396078, 0.396078, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = -1.025
+anchor_right = 0.931
+anchor_bottom = -1.025
+offset_left = -233.992
+offset_top = 58.0
+offset_right = -31.9922
+offset_bottom = 81.0
+scale = Vector2(0.683975, 0.683975)
+text = "@Guest"
+text_overrun_behavior = 3
+
+[node name="Name" type="Label" parent="Sprite3D/CanvasLayer/name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = -1.025
+anchor_right = 0.931
+anchor_bottom = -1.025
+offset_left = -233.992
+offset_top = 47.0
+offset_right = -31.9922
+offset_bottom = 70.0
+scale = Vector2(0.683975, 0.683975)
+text = "null - Cant code dis :/"
+text_overrun_behavior = 3
+
+[node name="border" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = -1.025
+anchor_right = 0.931
+anchor_bottom = -1.025
+offset_left = -36.9921
+offset_top = 44.0
+offset_right = 710.408
+offset_bottom = 786.168
+scale = Vector2(0.0451613, 0.0451613)
+texture = ExtResource("12_ba6jm")
+
+[node name="Texture" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = -1.025
+anchor_right = 0.931
+anchor_bottom = -1.025
+offset_left = -31.9921
+offset_top = 49.0
+offset_right = 481.008
+offset_bottom = 562.0
+scale = Vector2(0.0451613, 0.0451613)
+texture = ExtResource("10_ctuhd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 84.0
+offset_right = 16.0
+offset_bottom = 356.0
 
 [node name="main" type="Panel" parent="Sprite3D/CanvasLayer"]
 anchors_preset = 1
@@ -2960,91 +3028,6 @@ offset_left = -39.016
 offset_top = 40.016
 offset_right = 668.984
 offset_bottom = 749.016
-scale = Vector2(0.0451613, 0.0451613)
-texture = ExtResource("10_ctuhd")
-
-[node name="name" type="Panel" parent="Sprite3D/CanvasLayer"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -216.0
-offset_top = 41.0
-offset_right = 16.0001
-offset_bottom = 81.0
-grow_horizontal = 0
-theme = SubResource("Theme_crv8a")
-
-[node name="badge" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.931
-anchor_top = -1.025
-anchor_right = 0.931
-anchor_bottom = -1.025
-offset_left = -211.992
-offset_top = 50.0
-offset_right = 631.688
-offset_bottom = 855.112
-scale = Vector2(0.027805, 0.027805)
-texture = ExtResource("10_kvw8k")
-
-[node name="Nick" type="Label" parent="Sprite3D/CanvasLayer/name"]
-modulate = Color(0.396078, 0.396078, 0.396078, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.931
-anchor_top = -1.025
-anchor_right = 0.931
-anchor_bottom = -1.025
-offset_left = -185.992
-offset_top = 58.0
-offset_right = 16.0078
-offset_bottom = 81.0
-scale = Vector2(0.683975, 0.683975)
-text = "@Guest"
-text_overrun_behavior = 3
-
-[node name="Name" type="Label" parent="Sprite3D/CanvasLayer/name"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.931
-anchor_top = -1.025
-anchor_right = 0.931
-anchor_bottom = -1.025
-offset_left = -185.992
-offset_top = 47.0
-offset_right = 16.0078
-offset_bottom = 70.0
-scale = Vector2(0.683975, 0.683975)
-text = "null - Cant code dis :/"
-text_overrun_behavior = 3
-
-[node name="border" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.931
-anchor_top = -1.025
-anchor_right = 0.931
-anchor_bottom = -1.025
-offset_left = -36.9921
-offset_top = 44.0
-offset_right = 710.408
-offset_bottom = 786.168
-scale = Vector2(0.0451613, 0.0451613)
-texture = ExtResource("12_ba6jm")
-
-[node name="Texture" type="TextureRect" parent="Sprite3D/CanvasLayer/name"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.931
-anchor_top = -1.025
-anchor_right = 0.931
-anchor_bottom = -1.025
-offset_left = -31.9921
-offset_top = 49.0
-offset_right = 481.008
-offset_bottom = 562.0
 scale = Vector2(0.0451613, 0.0451613)
 texture = ExtResource("10_ctuhd")
 
@@ -3519,6 +3502,7 @@ offset_left = 8.0
 offset_top = -280.0
 offset_right = 288.0
 offset_bottom = -4.0
+visibility_mode = 0
 action_left = "left"
 action_right = "right"
 action_up = "up"
@@ -3543,19 +3527,35 @@ texture_focused = ExtResource("15_dflsn")
 script = ExtResource("16_nakhs")
 visibility_mode = 1
 
-[node name="Panel" type="Panel" parent="Sprite3D/CanvasLayer"]
+[node name="Origin" type="Panel" parent="Sprite3D/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.195
+anchor_right = 0.806
+anchor_bottom = 1.0
+offset_left = 71.36
+offset_top = 65.0
+offset_right = -72.5121
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x6w42")
+
+[node name="Panel3" type="Panel" parent="Sprite3D/CanvasLayer/Origin"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 296.0
-offset_top = 150.0
-offset_right = -296.0
-offset_bottom = -177.0
+offset_top = 1000.0
+offset_right = 296.0
+offset_bottom = 1000.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.698132
+scale = Vector2(1e-05, 2)
 theme = SubResource("Theme_h83jf")
 
-[node name="MainButtonspanel" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="MainButtonspanel" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -3564,23 +3564,23 @@ offset_top = 2.0
 offset_bottom = -0.101002
 theme = SubResource("Theme_romks")
 
-[node name="Settings" type="Button" parent="Sprite3D/CanvasLayer/Panel/MainButtonspanel"]
+[node name="Settings" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel"]
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Settings"
 
-[node name="Menu" type="Button" parent="Sprite3D/CanvasLayer/Panel/MainButtonspanel"]
+[node name="Menu" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Menu"
 
-[node name="Feedback" type="Button" parent="Sprite3D/CanvasLayer/Panel/MainButtonspanel"]
+[node name="Feedback" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Feedback"
 
-[node name="Settings" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="Settings" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.193
@@ -3590,18 +3590,18 @@ offset_top = 0.0469971
 offset_bottom = -0.0530014
 theme = SubResource("Theme_bupju")
 
-[node name="Graphics" type="Button" parent="Sprite3D/CanvasLayer/Panel/Settings"]
+[node name="Graphics" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/Settings"]
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Graphics"
 
-[node name="Debug" type="Button" parent="Sprite3D/CanvasLayer/Panel/Settings"]
+[node name="Debug" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/Settings"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Debug Menu"
 
-[node name="Menu" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="Menu" type="HBoxContainer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.193
@@ -3611,18 +3611,18 @@ offset_top = 0.0469971
 offset_bottom = -0.0530014
 theme = SubResource("Theme_bupju")
 
-[node name="Leave" type="Button" parent="Sprite3D/CanvasLayer/Panel/Menu"]
+[node name="Leave" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/Menu"]
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Leave"
 
-[node name="Reset" type="Button" parent="Sprite3D/CanvasLayer/Panel/Menu"]
+[node name="Reset" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reset Character"
 
-[node name="Feedback" type="VBoxContainer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="Feedback" type="VBoxContainer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.029
@@ -3636,19 +3636,19 @@ offset_bottom = 0.0379944
 theme = SubResource("Theme_42fu6")
 script = ExtResource("18_d2mkh")
 
-[node name="Feedbacktext" type="TextEdit" parent="Sprite3D/CanvasLayer/Panel/Feedback"]
+[node name="Feedbacktext" type="TextEdit" parent="Sprite3D/CanvasLayer/Origin/Panel3/Feedback"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Send" type="Button" parent="Sprite3D/CanvasLayer/Panel/Feedback"]
+[node name="Send" type="Button" parent="Sprite3D/CanvasLayer/Origin/Panel3/Feedback"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 text = "Send"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="Sprite3D/CanvasLayer/Panel/Feedback"]
+[node name="HTTPRequest" type="HTTPRequest" parent="Sprite3D/CanvasLayer/Origin/Panel3/Feedback"]
 
-[node name="Graphics" type="VBoxContainer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="Graphics" type="VBoxContainer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 layout_mode = 2
 anchor_left = 0.029
 anchor_top = 0.374
@@ -3662,17 +3662,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = SubResource("Theme_sp183")
 
-[node name="Bloom" type="CheckBox" parent="Sprite3D/CanvasLayer/Panel/Graphics"]
+[node name="Bloom" type="CheckBox" parent="Sprite3D/CanvasLayer/Origin/Panel3/Graphics"]
 layout_mode = 2
 button_pressed = true
 text = "Bloom"
 
-[node name="SSIL" type="CheckBox" parent="Sprite3D/CanvasLayer/Panel/Graphics"]
+[node name="SSIL" type="CheckBox" parent="Sprite3D/CanvasLayer/Origin/Panel3/Graphics"]
 layout_mode = 2
 button_pressed = true
 text = "SSIL (Raytracing)"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D/CanvasLayer/Panel"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D/CanvasLayer/Origin/Panel3"]
 libraries = {
 "": SubResource("AnimationLibrary_xhnjt")
 }
@@ -3770,13 +3770,13 @@ environment = SubResource("Environment_u468o")
 [connection signal="state" from="Sprite3D/CanvasLayer/Menu" to="." method="_on_menu_state"]
 [connection signal="button_down" from="Sprite3D/CanvasLayer/jump" to="Sprite3D/CanvasLayer/jump" method="_on_button_down"]
 [connection signal="button_up" from="Sprite3D/CanvasLayer/jump" to="Sprite3D/CanvasLayer/jump" method="_on_button_up"]
-[connection signal="pressed" from="Sprite3D/CanvasLayer/Panel/MainButtonspanel/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Sprite3D/CanvasLayer/Panel/MainButtonspanel/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Sprite3D/CanvasLayer/Panel/MainButtonspanel/Feedback" to="." method="_on_feedback_pressed"]
-[connection signal="pressed" from="Sprite3D/CanvasLayer/Panel/Settings/Graphics" to="." method="_on_graphics_pressed"]
-[connection signal="text_changed" from="Sprite3D/CanvasLayer/Panel/Feedback/Feedbacktext" to="." method="_on_feedbacktext_text_changed"]
-[connection signal="pressed" from="Sprite3D/CanvasLayer/Panel/Feedback/Send" to="Sprite3D/CanvasLayer/Panel/Feedback" method="_on_send_pressed"]
-[connection signal="request_completed" from="Sprite3D/CanvasLayer/Panel/Feedback/HTTPRequest" to="Sprite3D/CanvasLayer/Panel/Feedback" method="_on_http_request_request_completed"]
-[connection signal="toggled" from="Sprite3D/CanvasLayer/Panel/Graphics/Bloom" to="." method="_on_bloom_toggled"]
-[connection signal="toggled" from="Sprite3D/CanvasLayer/Panel/Graphics/SSIL" to="." method="_on_ssil_toggled"]
-[connection signal="animation_finished" from="Sprite3D/CanvasLayer/Panel/AnimationPlayer" to="Sprite3D/CanvasLayer/Menu" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Sprite3D/CanvasLayer/Origin/Panel3/MainButtonspanel/Feedback" to="." method="_on_feedback_pressed"]
+[connection signal="pressed" from="Sprite3D/CanvasLayer/Origin/Panel3/Settings/Graphics" to="." method="_on_graphics_pressed"]
+[connection signal="text_changed" from="Sprite3D/CanvasLayer/Origin/Panel3/Feedback/Feedbacktext" to="." method="_on_feedbacktext_text_changed"]
+[connection signal="pressed" from="Sprite3D/CanvasLayer/Origin/Panel3/Feedback/Send" to="Sprite3D/CanvasLayer/Origin/Panel3/Feedback" method="_on_send_pressed"]
+[connection signal="request_completed" from="Sprite3D/CanvasLayer/Origin/Panel3/Feedback/HTTPRequest" to="Sprite3D/CanvasLayer/Origin/Panel3/Feedback" method="_on_http_request_request_completed"]
+[connection signal="toggled" from="Sprite3D/CanvasLayer/Origin/Panel3/Graphics/Bloom" to="." method="_on_bloom_toggled"]
+[connection signal="toggled" from="Sprite3D/CanvasLayer/Origin/Panel3/Graphics/SSIL" to="." method="_on_ssil_toggled"]
+[connection signal="animation_finished" from="Sprite3D/CanvasLayer/Origin/Panel3/AnimationPlayer" to="Sprite3D/CanvasLayer/Menu" method="_on_animation_player_animation_finished"]
