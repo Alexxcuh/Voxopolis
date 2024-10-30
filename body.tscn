@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://dymrv5eecoc73"]
 
-[ext_resource type="Texture2D" uid="uid://ckr28ve8g0mo0" path="res://newcharacterbutbetter_apbface.png" id="1_qqc40"]
+[ext_resource type="Texture2D" uid="uid://ckr28ve8g0mo0" path="res://newcharacterbutbetter_apbface.png" id="1_7w3bb"]
 [ext_resource type="Texture2D" uid="uid://drd6wisfm0f0d" path="res://template.png" id="2_q0vi3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic6ic"]
 resource_name = "Material.004"
 cull_mode = 2
-albedo_texture = ExtResource("1_qqc40")
+albedo_texture = ExtResource("1_7w3bb")
 roughness = 0.5
 emission_enabled = true
 

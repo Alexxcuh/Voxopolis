@@ -147,23 +147,16 @@ func _ready():
 	msg.text = ''
 	DisplayName.text = self.name
 	var cmd_args = OS.get_cmdline_args()
-	print("Command Line Arguments:", cmd_args)
 	if cmd_args.size() > 0:
 		var url = cmd_args[0]
-		print("Received URL:", url)
 		if url.begins_with("voxopolis:"):
 			var base64_param = url.substr(9)
-			print("Base64 Parameter:", base64_param)
 			var decoded_text = Marshalls.base64_to_utf8(base64_param)
-			print("Decoded Text:", decoded_text)
 			DisplayName.text = decoded_text
 		else:
-			print("Invalid URL format")
 			var base64_param = url
-			print("Base64 Parameter:", base64_param)
 			if url != " " and url != "" and url != null:
 				var decoded_text = Marshalls.base64_to_utf8(base64_param)
-				print("Decoded Text:", decoded_text)
 				DisplayName.text = decoded_text
 	if DisplayName.text == '':
 		DisplayName.text = self.name
@@ -210,7 +203,6 @@ func fetchplayers(id):
 	pass
 
 func leaderboard(i,y):
-	print("bro")
 	var clc =  $Sprite3D/CanvasLayer.get_children()
 	for v in clc:
 		if v.name == 'namechild':
@@ -219,7 +211,6 @@ func leaderboard(i,y):
 	var bc = boardclone.get_children()
 	vbox.add_child(boardclone)
 	boardclone.name = 'namechild'
-	print(i.name)
 	boardclone.visible = true
 	for o in bc:
 		if o.name == 'Nick':

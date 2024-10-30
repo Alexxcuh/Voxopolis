@@ -57,15 +57,10 @@ func _input(event):
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					else:
 						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if event is InputEventScreenTouch:
-			if not ctrl_lock:
-				if event.pressed:
-					$"../../../..".messagefromserver(str(event.position),'SERVER',0)
 		if event is InputEventScreenDrag:
 			if not ctrl_lock:
-				$"../../../..".messagefromserver(str(event.position),'SERVER',0)
 				var rotation_change
-				rotation_change = -event.relative * sensitivity
+				rotation_change = -event.relative * sensitivity * 2.5
 				xbone.rotate_x(deg_to_rad(rotation_change.y))
 				ybone.rotate_y(deg_to_rad(rotation_change.x))
 		elif event is InputEventMouseMotion:
@@ -75,10 +70,6 @@ func _input(event):
 					rotation_change = -event.relative * sensitivity
 					xbone.rotate_x(deg_to_rad(rotation_change.y))
 					ybone.rotate_y(deg_to_rad(rotation_change.x))
-		elif event is InputEventScreenTouch:
-			if not ctrl_lock:
-				if event.pressed:
-					$"../../../..".messagefromserver(str(event.position),'SERVER', 0)
 		elif Input.is_action_just_pressed("mouse_wheel_up") and zoom > min_zoom and disable == 0:
 			if disable == 0:
 				zoom -= 0.5

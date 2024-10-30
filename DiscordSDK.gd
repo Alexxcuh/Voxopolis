@@ -7,11 +7,11 @@ func _ready():
 	DiscordSDK.app_id = 911731423101198366
 	# Now 'image' contains the pixel data from the compressed texture
 	if OS.is_debug_build():
-		DiscordSDK.details = "Playing Voxopolis (DEBUG) v" + version
+		DiscordSDK.details = "Playing Voxopolis (DEBUG)" + version
 		DiscordSDK.large_image_text = "Coding/Testing (Probably)"
 		DiscordSDK.large_image = "debug"
 	else:
-		DiscordSDK.details = "Playing Voxopolis v" + version
+		DiscordSDK.details = "Playing Voxopolis" + version
 		DiscordSDK.large_image = "normal"
 
 	DiscordSDK.start_timestamp = int(Time.get_unix_time_from_system())

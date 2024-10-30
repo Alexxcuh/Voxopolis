@@ -174,7 +174,7 @@ func _process(_delta):
 	Health = HS.value
 	HealthText.text = "Health:" + str(Health)
 	#VerText.text = 'UNSTABLE Ver ' + version
-	VerText.text = 'TEST BUILD Ver ' + version
+	VerText.text = 'Ver ' + version
 	var staminaprep = str(round(Stamina_bar))
 	if infstamina == false:
 		StaminaSlider.value = Stamina_bar

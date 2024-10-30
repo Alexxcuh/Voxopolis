@@ -2,30 +2,23 @@ extends Node
 
 var displaynameofplayer = ''
 var peer = ENetMultiplayerPeer.new()
-@export var player_scene : PackedScene
+@export var player_scene = load("res://player.tscn")
 @onready var address = $CanvasLayer/Address
 
 func _ready():
 	var cmd_args = OS.get_cmdline_args()
-	print("Command Line Arguments:", cmd_args)
 	
 	if cmd_args.size() > 0:
 		var url = cmd_args[0]
-		print("Received URL:", url)
 		if url.begins_with("voxopolis:"):
 			var base64_param = url.substr(9)
-			print("Base64 Parameter:", base64_param)
 			var decoded_text = Marshalls.base64_to_utf8(base64_param)
-			print("Decoded Text:", decoded_text)
 			$CanvasLayer/decoded.text = decoded_text
 			$CanvasLayer/base64.text = base64_param
 		else:
-			print("Invalid URL format")
 			var base64_param = url
 			if url != " " and url != "" and url != null:
-				print("Base64 Parameter:", base64_param)
 				var decoded_text = Marshalls.base64_to_utf8(base64_param)
-				print("Decoded Text:", decoded_text)
 				$CanvasLayer/decoded.text = "Welcome Back, " + decoded_text + '!'
 
 func _on_host_pressed():

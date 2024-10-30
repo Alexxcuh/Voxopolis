@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player.gd" id="1_o62uq"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_lyr0w"]
 [ext_resource type="Texture2D" uid="uid://drd6wisfm0f0d" path="res://template.png" id="4_j2agx"]
-[ext_resource type="Texture2D" uid="uid://ckr28ve8g0mo0" path="res://newcharacterbutbetter_apbface.png" id="5_d5ffe"]
+[ext_resource type="Texture2D" uid="uid://ckr28ve8g0mo0" path="res://newcharacterbutbetter_apbface.png" id="5_nyc4f"]
 [ext_resource type="Script" path="res://Sprite3D.gd" id="7_jjccu"]
 [ext_resource type="AudioStream" uid="uid://cranljx6gips1" path="res://assets/jump.mp3" id="9_pl6ut"]
 [ext_resource type="Texture2D" uid="uid://bsf4iowxe33nb" path="res://assets/noob.png" id="10_ctuhd"]
@@ -66,7 +66,7 @@ albedo_texture = ExtResource("4_j2agx")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic6ic"]
 resource_name = "Material.004"
 cull_mode = 2
-albedo_texture = ExtResource("5_d5ffe")
+albedo_texture = ExtResource("5_nyc4f")
 roughness = 0.5
 emission_enabled = true
 
@@ -2811,6 +2811,7 @@ shape = SubResource("CapsuleShape3D_ljgnf")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 centered = false
 script = ExtResource("7_jjccu")
+version = "1.5"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Sprite3D"]
 
@@ -2821,11 +2822,12 @@ anchor_top = 1.0
 anchor_right = 0.998
 anchor_bottom = 1.0
 offset_left = -197.696
-offset_top = -35.0
+offset_top = -27.0
 offset_right = 0.303955
-offset_bottom = -8.0
 text = "TEST BUILD VER: [version]"
 label_settings = SubResource("LabelSettings_vqb0r")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Debug" type="Label" parent="Sprite3D/CanvasLayer"]
 visible = false
@@ -3315,14 +3317,18 @@ text = "Infinite Stamina"
 
 [node name="ctrllock" type="TextureRect" parent="Sprite3D/CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.167
-anchor_right = 0.778
-anchor_bottom = 1.0
-offset_left = 366.616
-offset_top = 304.0
-offset_right = -305.256
-offset_bottom = -312.0
+anchor_left = 0.485
+anchor_top = 0.469
+anchor_right = 0.513
+anchor_bottom = 0.519
+offset_left = 0.279968
+offset_top = 0.0879822
+offset_right = 0.0239868
+offset_bottom = -0.312042
+mouse_filter = 2
 texture = ExtResource("14_xqwqi")
+expand_mode = 3
+stretch_mode = 3
 
 [node name="notif" type="Panel" parent="Sprite3D/CanvasLayer"]
 visible = false
