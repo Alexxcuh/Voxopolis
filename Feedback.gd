@@ -8,7 +8,7 @@ func _on_send_pressed():
 		"content":null,
 		"embeds":[
 			{"title":"**APB Feedback**",
-			"description":Feedbacktext.text,
+			"description":$Feedbacktext.text,
 			"color":randi_range(1111111,9999999),
 			"author":{
 				"name":$"../../main/Name".text +"\n"+$"../../main/Nick".text
